@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+	char str[1000];
+
+	if (fgets(str, sizeof(str), stdin) == NULL)
+		return 0;
+
+	for (int i = 0; str[i] != '\0' && str[i] != '\n'; i++) {
+		unsigned char ch = (unsigned char)str[i];
+		if (islower(ch))
+			str[i] = (char)toupper(ch);
+		else if (isupper(ch))
+			str[i] = (char)tolower(ch);
+	}
+
+	printf("%s", str);
+	return 0;
+}
